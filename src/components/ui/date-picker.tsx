@@ -51,17 +51,13 @@ export function DatePicker({
     (_, i) => startYear + i
   );
 
-  console.log(years);
-
   const handleMonthChange = (month: string) => {
     const newDate = setMonth(date, months.indexOf(month));
-
     setDate(newDate);
   };
 
   const handleYearChange = (year: string) => {
     const newDate = setYear(date, parseInt(year));
-
     setDate(newDate);
   };
 
@@ -77,7 +73,7 @@ export function DatePicker({
         <Button
           variant={"outline"}
           className={cn(
-            "w-[250px] justify-start text-left font-normal",
+            "w-[250px] justify-start text-left font-normal bg-gradient-to-r from-purple-500 to-indigo-500 text-white",
             !date && "text-muted-foreground"
           )}
         >
@@ -85,13 +81,13 @@ export function DatePicker({
           {date ? format(date, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0">
-        <div className="flex justify-between p-2">
+      <PopoverContent className="w-auto p-0 bg-white shadow-lg rounded-lg animate-fadeIn">
+        <div className="flex justify-between p-2 border-b border-gray-200">
           <Select
             onValueChange={handleMonthChange}
             value={months[getMonth(date)]}
           >
-            <SelectTrigger className="w-[110px]">
+            <SelectTrigger className="w-[110px] text-purple-600">
               <SelectValue placeholder="Month" />
             </SelectTrigger>
             <SelectContent>
@@ -106,7 +102,7 @@ export function DatePicker({
             onValueChange={handleYearChange}
             value={getYear(date).toString()}
           >
-            <SelectTrigger className="w-[110px]">
+            <SelectTrigger className="w-[110px] text-purple-600">
               <SelectValue placeholder="Year" />
             </SelectTrigger>
             <SelectContent>
@@ -125,6 +121,7 @@ export function DatePicker({
           initialFocus
           month={date}
           onMonthChange={setDate}
+          className="p-4 transition-transform duration-500 transform ease-in-out"
         />
       </PopoverContent>
     </Popover>
