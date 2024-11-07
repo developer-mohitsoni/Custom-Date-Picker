@@ -118,7 +118,6 @@ export function DatePicker({
           mode="single"
           selected={date}
           onSelect={handleSelect}
-          initialFocus
           month={date}
           onMonthChange={setDate}
           className="p-4 transition-transform duration-500 transform ease-in-out"
